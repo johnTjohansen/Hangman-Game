@@ -1,0 +1,27 @@
+body {
+  background-image: url("../images/playhouse.jpg");
+  background-repeat: no-repeat;
+  background-position: right top;    
+  background-attachment: fixed;
+}
+
+h1, h2{
+	font-family: 'Chewy', cursive;
+}
+
+h1 {
+	font-size: 60px;
+	color: red;
+}
+
+h2 {
+	font-size: 30px;
+	color: blue;
+}
+
+.wrapper {
+  background-color: black;
+  font-family: 'Cabin Sketch', cursive;
+  color: #fff;
+  width: 600px;
+}
