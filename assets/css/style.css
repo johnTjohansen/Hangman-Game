@@ -1,27 +1,74 @@
 body {
   background-image: url("../images/playhouse.jpg");
   background-repeat: no-repeat;
-  background-position: right top;    
+  background-position: left top;    
   background-attachment: fixed;
+  margin-top: 10px;
+  margin-left: 10px;
 }
 
 h1, h2{
 	font-family: 'Chewy', cursive;
+  letter-spacing: 2px;
+  text-align: center;
 }
 
 h1 {
-	font-size: 60px;
-	color: red;
+	font-size: 40px;
+	color: #f22473;
+  text-shadow: 1px 1px #fcd8cf;
+  word-wrap: break-word;
 }
 
 h2 {
-	font-size: 30px;
-	color: blue;
+	font-size: 25px;
+	color: #93f2f2;
+  text-shadow: 2px 1px #627cdb;
+}
+
+h3 {
+  font-size: 20px;
+}
+
+p {
+  margin: 15px 0;
 }
 
 .wrapper {
-  background-color: black;
-  font-family: 'Cabin Sketch', cursive;
-  color: #fff;
-  width: 600px;
+  background-image: url("../images/frigInner.jpg"); 
+  background-repeat: no-repeat; 
+  background-size: cover;
+  border-radius: 50px/15px;
+  font-family: 'Gloria Hallelujah', cursive;
+  font-weight: bold;
+  font-size: 24px;
+  border: 5px solid white;
+  text-shadow: 2px 2px black;
+  color: white;
+  width: 300px;
+  height: 420px;
+  padding: 20px;
+  margin-left: 75px;
+  position: relative;
+  overflow: hidden;
 }
+
+.winLoseBox {
+  position: absolute;
+  float: right;
+  margin: 100px 0 0 150px;
+  width: 100px;
+  height: auto;
+  z-index: 99
+}
+
+/* style modifications for the bigger-than-iphone browser */
+@media screen and (min-width: 760px) {
+
+  h1 {
+  font-size: 50px;
+  }
+
+  h2 {
+  font-size: 35px;
+  }
