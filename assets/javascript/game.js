@@ -103,16 +103,22 @@ function roundComplete() {
 		totGames++;
 		document.getElementById("gamesWon").innerHTML = numWins;
 		document.getElementById("totGames").innerHTML = totGames;
-		alert("You win!");
-		startGame();
+
+		setTimeout(function() {
+			startGame();
+			alert("You win!");
+		}, 1000);
 	};
 
 /* when turnsRemaining counter runs out, process loss and setup new game */	
 	if (turnsRem === 0) {
 		totGames++;
 		document.getElementById("totGames").innerHTML = totGames;
-	    alert("Sorry, you lose");
-		startGame();
+
+		setTimeout(function() {
+			startGame();
+			alert("Sorry, you lose");
+		}, 1000);
 	};
 /* end function */
 };
