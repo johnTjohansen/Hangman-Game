@@ -5,6 +5,7 @@ body {
   background-attachment: fixed;
   margin-top: 10px;
   margin-left: 10px;
+  max-width: 1200px;
 }
 
 h1, h2{
@@ -33,8 +34,8 @@ h3 {
 p {
   margin: 15px 0;
 }
-
-.wrapper {
+/* designed game box to resemble a refrigerator */
+#gameBox {
   background-image: url("../images/frigInner.jpg"); 
   background-repeat: no-repeat; 
   background-size: cover;
@@ -45,30 +46,33 @@ p {
   border: 5px solid white;
   text-shadow: 2px 2px black;
   color: white;
-  width: 300px;
+  width: 350px;
   height: 420px;
   padding: 20px;
-  margin-left: 75px;
+  margin-left: 60px;
+  float: left;
   position: relative;
   overflow: hidden;
 }
-
-.winLoseBox {
-  position: absolute;
-  float: right;
-  margin: 100px 0 0 150px;
-  width: 100px;
-  height: auto;
+/*  display win or lose image only when round completed.  JS module will 
+    control it.  Positioned over door porthole. */
+#winLoseBox img {
+  visibility: hidden;
+  clear: both;
+  position: fixed;
+  left: 620px;
+  top: 230px;
+  width: 45px;
+  height: 45px;
   z-index: 99
 }
+/*  display win or lose message only when round completed.  JS module will
+    control it.  Positioned under door porthole. */
+#winLose {
+  visibility: hidden;
+  position: fixed;
+  clear: both;
+  left: 580px;
+  top: 275px;
 
-/* style modifications for the bigger-than-iphone browser */
-@media screen and (min-width: 760px) {
-
-  h1 {
-  font-size: 50px;
-  }
-
-  h2 {
-  font-size: 35px;
-  }
+}

@@ -12,6 +12,8 @@
   var numBlanks = 0;
   var currentWord = [];
   var progressWord = [];
+  var resultsMsg = document.getElementById("winLose");
+  var resultsImg = document.getElementById("winLoseImg");
 
   startGame();
   document.onkeyup = function(event) {
@@ -28,16 +30,12 @@ function startGame() {
   progressWord = [];
   wrongLet = [];	
 
-  console.log("in startGame function");
-
-  /* choose a word from list*/
+/* choose a word from list*/
   currentWord = answers[Math.floor(Math.random() * answers.length)];
-  /* set up answer underlines */
+/* set up answer underlines */
   for (var i = 0; i < currentWord.length; i++) {
        progressWord.push("_");
   };
-  console.log(currentWord);
-  console.log(progressWord);
 
   document.getElementById('guessesLeft').innerHTML = turnsRem;
   document.getElementById('currWord').innerHTML = progressWord.join(" ");
@@ -50,10 +48,13 @@ function guessCheck(g) {
 /*	Check player's guess to see if letter is in the currentWord.
 	Replace the guess into the word layout - overlaying underscores
 	Or add guess to wrong guess list and decrease turns remaining.*/
-    console.log("in guessCheck function");
 
     var found = false;
     var repeat = false;
+/* Re-hide the win/lose image & message */
+    resultsMsg.style.visibility = "hidden";
+	resultsImg.style.visibility = "hidden";
+
 
 /*	Check player's guess to see if letter is in the currentWord.*/
     for (var i = 0; i < currentWord.length; i++) {
@@ -61,13 +62,14 @@ function guessCheck(g) {
             found = true;
         }
     };
-/* Check player's guess to see if it's already guessed */
+
+/* Check player's guess to see if it's already been guessed */
     for (var i = 0; i < wrongLet.length; i++) {
         if (wrongLet[i] === g) {
             repeat = true;
         }
     };
-    console.log(repeat);
+
 /*  If the guess is a new letter and is in the word, replace it into
     the screen word layout - overlaying underscores.  If not in word
     decrease turnsRemaining and add guess to wrongLetter array. */
@@ -90,35 +92,35 @@ function guessCheck(g) {
 };
 
 function roundComplete() {
-/* 1. update the HTML and determine if game over */
-  console.log("in roundComplete function");
-
+/* update the HTML and determine if game round is finished */
 	document.getElementById('currWord').innerHTML = progressWord.join(" ");
 	document.getElementById('guessesLeft').innerHTML = turnsRem;
 	document.getElementById('triedLetters').innerHTML = wrongLet.join(" ");
 
-/* if word has been completely guessed, process win and setup new game */	
+/* if word has been completely guessed, process win and setup new game. 
+	Make WIN image & message visible. */	
 	if (progressWord.join("") === currentWord) {
 		numWins++;
 		totGames++;
 		document.getElementById("gamesWon").innerHTML = numWins;
 		document.getElementById("totGames").innerHTML = totGames;
-
-		setTimeout(function() {
-			startGame();
-			alert("You win!");
-		}, 1000);
+		resultsMsg.style.visibility = "visible";
+		resultsMsg.innerHTML = "You won!";
+		resultsImg.style.visibility = "visible";
+		resultsImg.src = "assets/images/win.jpg";
+		startGame();
 	};
 
-/* when turnsRemaining counter runs out, process loss and setup new game */	
+/* when turnsRemaining counter runs out, process loss and setup new game.
+	Make LOSE image & message visible. */	
 	if (turnsRem === 0) {
 		totGames++;
 		document.getElementById("totGames").innerHTML = totGames;
-
-		setTimeout(function() {
-			startGame();
-			alert("Sorry, you lose");
-		}, 1000);
+		resultsMsg.style.visibility = "visible";
+		resultsMsg.innerHTML = "Nope, sorry";
+		resultsImg.style.visibility = "visible";
+		resultsImg.src = "assets/images/lose.jpg";
+		startGame();
 	};
 /* end function */
 };
